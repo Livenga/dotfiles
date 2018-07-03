@@ -1,0 +1,61 @@
+Config { font = "xft:Ricty:size=9:bold:antialias=true"
+       , bgColor = "#1c1c1c"
+       , fgColor = "#757575"
+       , position = Top
+       , border   = BottomB
+       , lowerOnStart = False
+       , overrideRedirect = False
+       , borderColor = "#26a69a"
+       , borderWidth = 1
+       , commands =
+       [ Run CoreTemp [ "--template", "Core T: <core0>C | <core1>C"
+                      , "--Low",      "50" -- units: %
+                      , "--High",     "80" -- units: %
+                      , "--low",       "darkgreen"
+                      , "--normal",    "darkorange"
+                      , "--high",      "darkred"
+                      ] 10
+       , Run MultiCpu [ "-t",       "Cpu: <total0>%|<total1>%"
+                      , "-L",       "70" -- units: %
+                      , "-H",       "80" -- units: %
+                      , "--low",    "darkgreen"
+                      , "--normal", "darkorange"
+                      , "--high",   "darkred"
+                      ] 10
+       , Run Date "<fc=#ABABAB>%F (%a) %T</fc>" "date" 10
+       , Run Memory [ "--template", "Mem: <usedratio>%"
+                    , "--Low", "20" -- units: %
+                    , "--High", "80" -- units: %
+                    , "--low", "darkgreen"
+                    , "--normal", "darkorange"
+                    , "--high", "darkred"
+       ] 10
+       , Run Battery [ "--template", "Batt: <acstatus>"
+                     , "--Low", "10" -- units: %
+                     , "--High", "80" -- units: %
+                     , "--low", "darkred"
+                     , "--normal", "darkorange"
+                     , "--high", "darkgreen"
+                     , "--" -- battery specific options
+                     , "-o", "<left>% (<timeleft>)"
+                     , "-O", "<fc=#dAA520>Charging</fc>"
+                     , "-i", "<fc=#006000>Charged</fc>"
+       ] 50
+       , Run Network "wls1" [ "-L", "40"
+                            , "-H", "200"
+                            , "-m", "3"
+                            , "--normal", "#ffffff"
+                            , "--high", "#a5d6a7"
+                            ] 10
+       , Run Network "enp0s25" [ "-L", "40"
+                            , "-H", "200"
+                            , "-m", "3"
+                            , "--normal", "#ffffff"
+                            , "--high", "#a5d6a7"
+       ] 10
+       , Run StdinReader
+       ]
+       , sepChar  = "%"
+       , alignSep = "}{"
+       , template = "%StdinReader% }{ %multicpu% >> %coretemp% >> %memory% >> %wls1% | %enp0s25% >> %battery% >> %date%  "
+}
