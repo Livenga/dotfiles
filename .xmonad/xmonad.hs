@@ -58,7 +58,12 @@ main = do
     , layoutHook         = toggleLayouts (noBorders Full) $ avoidStruts $ myLayout
     , logHook            = myLogHook wsbar
     , workspaces         = myWorkspaces
-    , modMask            = modm }
+    , modMask            = modm
+    }
+    `additionalKeys`
+      [ ((0,        0xFF61), spawn "scrot -z ~/Pictures/screenshot/%Y-%m-%dT%H:%M:%S.png")
+      , ((mod1Mask, 0xFF61), spawn "scrot -u -z ~/Pictures/screenshot/%Y-%m-%dT%H-%M-%S.png")
+      ]
 
 
 myWsBar  = "xmobar $HOME/.xmobarrc"
