@@ -48,3 +48,6 @@ URxvt*color14:      #4eb4fa
 !white
 URxvt*color7:       #5f5f5f
 URxvt*color15:      #d0d0d0
+
+URxvt.inputMethod: ibus
+URxvt.preeditType: OverTheStop
