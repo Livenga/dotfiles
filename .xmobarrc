@@ -8,7 +8,7 @@ Config { font = "xft:Ricty:size=9:bold:antialias=true"
        , borderColor = "#26a69a"
        , borderWidth = 1
        , commands =
-       [ Run CoreTemp [ "--template", "Core T: <core0>C | <core1>C"
+       [ Run CoreTemp [ "--template", "Core T: <core0>C | <core1>C | <core2>C"
                       , "--Low",      "50" -- units: %
                       , "--High",     "80" -- units: %
                       , "--low",       "darkgreen"
@@ -41,13 +41,13 @@ Config { font = "xft:Ricty:size=9:bold:antialias=true"
                      , "-O", "<fc=#dAA520>Charging</fc>"
                      , "-i", "<fc=#006000>Charged</fc>"
        ] 50
-       , Run Network "wls1" [ "-L", "40"
+       , Run Network "wlp3s0" [ "-L", "40"
                             , "-H", "200"
                             , "-m", "3"
                             , "--normal", "#ffffff"
                             , "--high", "#a5d6a7"
                             ] 10
-       , Run Network "enp0s25" [ "-L", "40"
+       , Run Network "enp0s26u1u5" [ "-L", "40"
                             , "-H", "200"
                             , "-m", "3"
                             , "--normal", "#ffffff"
@@ -57,5 +57,5 @@ Config { font = "xft:Ricty:size=9:bold:antialias=true"
        ]
        , sepChar  = "%"
        , alignSep = "}{"
-       , template = "%StdinReader% }{ %multicpu% >> %coretemp% >> %memory% >> %wls1% | %enp0s25% >> %battery% >> %date%  "
+       , template = "%StdinReader% }{ %multicpu% | %coretemp% | %memory% | %wlp3s0% | %enp0s26u1u5% | %battery% | %date%  "
 }
