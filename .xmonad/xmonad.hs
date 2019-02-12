@@ -34,7 +34,7 @@ import XMonad.Util.Run
 import XMonad.Util.SpawnOnce
 
 
-myWorkspaces = ["1", "2", "3", "4", "5", "6", "7"]
+myWorkspaces = ["1", "2", "3", "4", "5", "6", "7", "8", "9"]
 
 modm = mod4Mask
 
@@ -69,8 +69,9 @@ main = do
 myWsBar  = "xmobar $HOME/.xmobarrc"
 
 myLayout = (spacing 18 $ ResizableTall 1 (3/100) (3/5) [])
-  ||| (spacing 2 $ (dragPane Horizontal (1/10) (1/2)))
-  ||| (dragPane Vertical (1/10) (1/2))
+  ||| (spacing 2 $
+        (dragPane Horizontal (1/10) (1/2)) ||| (dragPane Vertical (1/10) (1/2))
+      )
 
 --myStartupHook = do
   --setWMName "LG3D"
