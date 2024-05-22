@@ -1,0 +1,17 @@
+{
+    "suggest.noselect": true,
+    "languageserver": {
+        "clangd": {
+            "command": "clangd",
+            "rootPatterns": [ "Makefile", ".git", "include", "src" ],
+            "filetypes": [ "h", "c" ]
+        },
+        "omnisharp": {
+            "command": "omnisharp",
+            "rootPatterns": [ ".csproj", ".sln" ],
+            "args": [ "-lsp", "-s ." ],
+            "filetypes": [ "cs" ],
+            "trace.server": "verbose"
+        }
+    }
+}

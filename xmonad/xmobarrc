@@ -1,0 +1,44 @@
+Config {
+      bgColor         = "Black"
+    , font            = "Osaka Regular 9"
+    , fgColor         = "#f3f3f3"
+    , additionalFonts = [ "Symbols Nerd font Regular 9"
+                        , "Cica Regular 9"
+                        ]
+    , position        = TopSize C 100 18
+    , border          = BottomB
+    , borderColor     = "#646464"
+    , sepChar         = "%"
+    , alignSep        = "}{"
+    , template        = "%StdinReader% }{ %multicpu% %cpufreq% %memory% %coretemp% %wlp2s0% %date%"
+    , commands        = [ Run StdinReader
+                 , Run Memory   [ "-t", "<fn=1>\xebd2</fn> <usedratio>%(<used>/<total>M) used, <available>M free"
+                                , "--Low"     , "20"
+                                , "--High"    , "75"
+                                , "--low"     , "lightgreen"
+                                , "--high"    , "darkorange"
+                                ] 10
+                 , Run MultiCpu [ "--template", "<fn=1>\xf303</fn> <fn=1>\xec19</fn> <total>%(<total0>%|<total1>%|<total2>%|<total3>%)"
+                                , "--Low",  "65"
+                                , "--low",  "lightgreen"
+                                , "--High", "80"
+                                , "--high", "darkorange"
+                                ] 10
+                 , Run CpuFreq [ "--template", "<cpu0>|<cpu1>|<cpu2>|<cpu3>[GHz]" ] 10
+                 , Run CoreTemp [ "--template", "<fn=1>\xf2c8</fn> (<core0>|<core1>|<core2>|<core3>)"
+                                , "--Low"     , "70"
+                                , "--High"    , "80"
+                                , "--low"     , "lightgreen"
+                                , "--normal"  , "lightgreen"
+                                , "--high"    , "darkorange"
+                                ] 10
+                 , Run Com "uname" ["-s", "-r"] "" 36000
+                 , Run Date "<fn=1>\xeab0</fn> %Y-%m-%d %H:%M:%S" "date" 10
+                 , Run Network "wlp2s0" [ "--template", "<fn=1>\xf0e8</fn> <fc=#ffde03><dev></fc>| <fn=1>\xf063</fn> <rx>KB| <fn=1>\xf062</fn> <tx>KB"
+                                , "--Low",  "1024"
+                                , "--low",  "lightgreen"
+                                , "--High", "4096"
+                                , "--high", "darkorange"
+                                ] 30
+                 ]
+}

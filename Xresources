@@ -1,0 +1,58 @@
+! URxvt*geometry: 160x82
+URxvt*geometry: 100x100-11-34
+URxvt*utf8: 1 URxvt*locale: true
+URxvt*wideChars: true
+URxvt*cjkWidth: true
+
+URxvt*faceSize: 12
+URxvt*xtermName: xterm-256color
+
+URxvt*scrollTtyOutput: false
+URxvt*scrollWithBuffer: true
+URxvt*scrollTtyKeypress: true
+URxvt.letterSpace: -1
+
+Xft.dpi: 72
+Xft.antialias: true
+Xft.rgba: rgb
+Xft.hinting: true
+Xft.hintstyle: hintfull
+
+URxvt.scrollBar: false
+!urxvt.font    : xft:Meslo LG M DZ:regular:size=9
+!urxvt.boldfont: xft:Meslo LG M DZ:bold   :size=9
+
+URxvt.depth: 32
+URxvt.transparent: true
+URxvt.fading: 0
+URxvt.loginShell: true
+URxvt.saveLines: 20000
+URxvt.internalBorder: 1
+URxvt.lineSpace: 0
+
+URxvt*background: #101010
+*foreground: #CCCCCC
+URxvt*color0: #101010
+URxvt*color1: #960050
+URxvt*color2: #66aa11
+URxvt*color3: #c47f2c
+URxvt*color4: #30309b
+URxvt*color5: #7e40a5
+URxvt*color6: #3579a8
+URxvt*color7: #9999aa
+URxvt*color8: #303030
+URxvt*color9: #ff0090
+URxvt*color10: #80ff00
+URxvt*color11: #ffba68
+URxvt*color12: #5f5fee
+URxvt*color13: #bb88dd
+URxvt*color14: #4eb4fa
+URxvt*color15: #d0d0d0
+URxvt*font: xft:Ricty:bold:pixelsize=10:antialias=true,xft:Noto Color Emoji:style=regular:size=10,xft:VL Gothic:style=Regular:size=10,xft:Cica:style=Regular=size=10
+!URxvt*boldFont: xft:DejaVu Sans Mono:bold:pixelsize=12:antialias=true:hinting=true
+
+URxvt.perl-ex-common: default,matcher,clipboard
+URxvt.clipboard.autocopy: true
+URxvt.matcher.button: 1
+URxvt.keysym.M-c: perl:clipboard:copy
+URxvt.keysym.M-v: perl:clipboard:paste

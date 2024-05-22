@@ -1,0 +1,20 @@
+shell = { program = "/usr/bin/bash", args = [] }
+live_config_reload = true
+
+
+[window]
+#opacity = 0.95
+blur = false
+
+
+[scrolling]
+history = 10000
+
+
+[font]
+normal = { family = "Osaka", style = "Regular-Mono" }
+size = 10
+builtin_box_drawing = true
+
+[cursor]
+style = { shape = "Block", blinking = "Always" }
