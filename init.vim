@@ -9,10 +9,6 @@ execute 'set runtimepath+=' . s:dein_src
 call dein#begin(s:dein_base)
 call dein#add(s:dein_src)
 
-" Your plugins go here:
-"call dein#add('Shougo/neosnippet.vim')
-"call dein#add('Shougo/neosnippet-snippets')
-
 " Shougo VimScripts
 call dein#add('Shougo/deol.nvim')
 
@@ -109,3 +105,51 @@ nnoremap <Leader>gr <Plug>(coc-references)
 
 let g:syntastic_c_checkers = [ 'gcc', 'clangd' ]
 let g:syntastic_cs_checkers = [ 'code_checker' ]
+
+
+
+" 16進数変換
+function! s:to_hex(value, ...)
+    if a:0 > 0
+        let shift_size = str2nr(a:1, 10)
+    else
+        let shift_size = 0
+    endif
+
+    if strlen(a:value) > 1
+        if type(a:value) != 1
+            throw ''
+        endif
+
+        if a:value[0] == '0'
+            if a:value[1] == 'x'
+                " 16進数
+                let value = str2nr(a:value, 16)
+            elseif a:value[1] == 'b'
+                " 2進数
+                let value = str2nr(a:value, 2)
+            else
+                " 8進数
+                let value = str2nr(a:value, 8)
+            endif
+        else
+            " 10進数
+            let value = str2nr(a:value, 10)
+        endif
+    else
+        let value = str2nr(a:value, 10)
+    endif
+
+    let result = printf('0x%08x', float2nr(value * pow(2, shift_size)))
+
+    let pos    = getpos('.')
+    let column = pos[2]
+    let row    = pos[1]
+
+    " 文字列の挿入
+    execute "normal! i" .. result .. "\<ESC>"
+endfunction
+
+
+" コマンド定義
+command! -nargs=+ ToHex call s:to_hex(<f-args>)
