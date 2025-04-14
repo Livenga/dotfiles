@@ -1,7 +1,3 @@
-shell = { program = "/usr/bin/bash", args = [] }
-live_config_reload = true
-
-
 [window]
 #opacity = 0.95
 blur = false
@@ -12,9 +8,15 @@ history = 10000
 
 
 [font]
-normal = { family = "Osaka", style = "Regular-Mono" }
-size = 10
+normal = { family = "Cica", style = "Regular" }
+size = 12
 builtin_box_drawing = true
 
 [cursor]
 style = { shape = "Block", blinking = "Always" }
+
+[general]
+live_config_reload = true
+
+[terminal]
+shell = { program = "/usr/bin/bash", args = [] }
