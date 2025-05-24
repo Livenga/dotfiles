@@ -4,11 +4,16 @@
 
 xsetroot -cursor_name left_ptr
 
+export GTK_IM_MODULE=fcitx
+export QT_IM_MODULE=fcitx
+export XMODIFIERS=@im=fcitx
 
-export GTK_IM_MODULE=ibus
-export XMODIFIERS=@im=ibus
-export QT_IM_MODULE=ibus
+fcitx5 &
 
-ibus-daemon -drxR
+xbindkeys
+
+# [[ -f ~/.Xmodmap ]] && xmodmap ~/.Xmodmap
+
+sleep 1
 
 exec xmonad
